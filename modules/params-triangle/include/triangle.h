@@ -6,11 +6,11 @@
 #include <utility>
 
 class Triangle {
-private:
+ private:
     std::pair<double, double>  a;
     std::pair<double, double>  b;
     std::pair<double, double>  c;
-public:
+ public:
     Triangle(std::pair<double, double>  _a, std::pair<double, double> _b,
         std::pair<double, double> _c);
 
