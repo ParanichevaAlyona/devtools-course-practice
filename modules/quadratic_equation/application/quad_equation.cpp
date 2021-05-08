@@ -1,9 +1,9 @@
 // Copyright 2021 ParanichevaAlyona
 
-#include "include/quad_equation_app.h"
-
 #include <iostream>
 #include <string>
+
+#include "include/quad_equation_app.h"
 
 int main(int argc, const char** argv) {
     QuadEquationApp app;
