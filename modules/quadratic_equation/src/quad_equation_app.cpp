@@ -1,12 +1,12 @@
 // Copyright 2021 ParanichevaAlyona
 
-#include "include/quad_equation_app.h"
-#include "include/QuadraticEquation.h"
-
 #include <iostream>
 #include <string>
 #include <sstream>
 #include <utility>
+
+#include "include/quad_equation_app.h"
+#include "include/QuadraticEquation.h"
 
 using std::stoi;
 
