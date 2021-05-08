@@ -16,7 +16,7 @@ void QuadEquationApp::help(const char* appname, const char* message) {
     message_ =
         std::string(message) +
         "This is a quadratic equations calculator application.\n\n" +
-        "Please provide arguments in the following format:\n$" 
+        "Please provide arguments in the following format:\n$"
         + appname + "<a> <b> <c> \n\n" \
 
         "Where all arguments are integer numbers. \n" \
@@ -27,8 +27,7 @@ bool QuadEquationApp::validateNumberOfArguments(int argc, const char** argv) {
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 4) {
+    } else if (argc != 4) {
         help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }
@@ -56,7 +55,8 @@ std::string QuadEquationApp::operator()(int argc, const char** argv) {
     try {
         QuadraticEquation eq(args.a, args.b, args.c);
         std::pair <double, double> res = eq.solver();
-        stream << "First root = " << res.first << ", second root = " << res.second << ".";
+        stream << "First root = " << res.first << ", second root = "
+            << res.second << ".";
         message_ = stream.str();
     }
     catch (const char* s) {
