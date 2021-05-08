@@ -1,4 +1,4 @@
-// Copyright 2021 MolotkovaSvetlana
+// Copyright 2021 Molotkova Svetlana
 
 #include <cmath>
 #include <utility>
