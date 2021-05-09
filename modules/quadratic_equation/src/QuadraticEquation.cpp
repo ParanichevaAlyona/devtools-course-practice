@@ -1,7 +1,6 @@
 // Copyright 2021 Molotkova Svetlana
 
 #include <cmath>
-
 #include <string>
 #include <utility>
 
