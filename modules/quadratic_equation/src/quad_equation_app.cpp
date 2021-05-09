@@ -1,5 +1,7 @@
 // Copyright 2021 ParanichevaAlyona
 
+#include <stdlib.h>
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -7,8 +9,6 @@
 
 #include "include/quad_equation_app.h"
 #include "include/QuadraticEquation.h"
-
-using std::stoi;
 
 QuadEquationApp::QuadEquationApp() : message_("") {}
 
@@ -19,7 +19,7 @@ void QuadEquationApp::help(const char* appname, const char* message) {
         "Please provide arguments in the following format:\n$"
         + appname + "<a> <b> <c> \n\n" \
 
-        "Where all arguments are integer numbers. \n" \
+        "Where all arguments are numbers. \n" \
         "Example: " + appname + " 2 -3 7.\n\n";
 }
 
@@ -28,10 +28,21 @@ bool QuadEquationApp::validateNumberOfArguments(int argc, const char** argv) {
         help(argv[0]);
         return false;
     } else if (argc != 4) {
-        help(argv[0], "ERROR: Should be 3 arguments.\n\n");
+        help(argv[0], "Should be 3 arguments.\n\n");
         return false;
     }
     return true;
+}
+
+double parseDouble(const char* arg) {
+    char* end;
+    double value = strtod(arg, &end);
+
+    if (end[0]) {
+        throw std::string("Wrong number format!");
+    }
+
+    return value;
 }
 
 std::string QuadEquationApp::operator()(int argc, const char** argv) {
@@ -42,14 +53,13 @@ std::string QuadEquationApp::operator()(int argc, const char** argv) {
     }
 
     try {
-        args.a = stoi(argv[1]);
-        args.b = stoi(argv[2]);
-        args.c = stoi(argv[3]);
+        args.a = parseDouble(argv[1]);
+        args.b = parseDouble(argv[2]);
+        args.c = parseDouble(argv[3]);
     }
-    catch (const char* s) {
-        return s;
+    catch (std::string& str) {
+        return str;
     }
-
 
     std::ostringstream stream;
     try {
@@ -59,9 +69,9 @@ std::string QuadEquationApp::operator()(int argc, const char** argv) {
             << res.second << ".";
         message_ = stream.str();
     }
-    catch (const char* s) {
-        stream << s;
-        message_ = stream.str();
+    catch (std::string& str) {
+        return str;
     }
+
     return message_;
 }
