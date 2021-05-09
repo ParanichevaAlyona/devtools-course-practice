@@ -25,14 +25,22 @@ add_test(
     COMMAND ${APPLICATION} 1 2
 )
 set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    PASS_REGULAR_EXPRESSION "Should be 3 arguments."
     LABELS "${MODULE}")
 
 add_test(
     NAME ${prefix}_can_Detect_Wrong_Number_Format
-    COMMAND ${APPLICATION} 0 2 -5
+    COMMAND ${APPLICATION} 2 ppp -5
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Not_Quadratic_Equation
+    COMMAND ${APPLICATION} 0 2 -5
+)
+set_tests_properties (${prefix}_can_Detect_Not_Quadratic_Equation PROPERTIES
     PASS_REGULAR_EXPRESSION "Not quadratic equation."
     LABELS "${MODULE}")
 
