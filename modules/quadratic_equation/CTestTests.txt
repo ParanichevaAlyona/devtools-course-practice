@@ -69,8 +69,16 @@ set_tests_properties (${prefix}_can_Find_Roots_When_Discriminant_Equals_0 PROPER
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_can_Find_Roots_When_a_Equals_1
+    COMMAND ${APPLICATION} 1 -5 6
+)
+set_tests_properties (${prefix}_can_Find_Roots_When_a_Equals_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "First root = 3, second root = 2."
+    LABELS "${MODULE}")
+    
+add_test(
     NAME ${prefix}_can_Find_Roots_When_b_Equals_0
-    COMMAND ${APPLICATION} 1 0 -9
+    COMMAND ${APPLICATION} 2 0 -18
 )
 set_tests_properties (${prefix}_can_Find_Roots_When_b_Equals_0 PROPERTIES
     PASS_REGULAR_EXPRESSION "First root = 3, second root = -3."
